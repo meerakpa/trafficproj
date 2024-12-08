@@ -16,7 +16,7 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
       with:
-        service_account_key: ${{ secrets.GCP_KEY }}
+        # service_account_key: ${{ secrets.GCP_KEY }}
         project_id: citric-gradient-439303-u3
 
     - name: Deploy to App Engine
