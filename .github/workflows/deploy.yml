@@ -13,11 +13,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Cloud SDK
+    - name: Authenticate with GCP
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_KEY }}
+
+    - name: Set up gcloud CLI
       uses: google-github-actions/setup-gcloud@v1
       with:
-        # service_account_key: ${{ secrets.GCP_KEY }}
         project_id: citric-gradient-439303-u3
+        install_components: app-engine-python
 
     - name: Deploy to App Engine
       run: gcloud app deploy app.yaml --quiet
